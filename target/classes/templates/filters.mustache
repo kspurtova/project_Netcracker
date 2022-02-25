@@ -1,0 +1,25 @@
+<html>
+
+<body>
+
+<div>Найти нужные материалы</div>
+<div><i>Фильтр по темам (тегам) в материалах. Выбор предмета и семестра, разбиение на темы.</i></div>
+
+<div>Список конспектов</div>
+<form method="post" action="filter">
+    <input type="text" name="filtertag" placeholder="Предмет">
+    <input type="text" name="filterdate" placeholder="Дата">
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+    <button type="submit">Найти</button>
+</form>
+{{#messages}}
+    <div>
+        <b>{{id}}</b>
+        <span>{{text}}</span>
+        <i>{{tag}}</i>
+        <span> {{date}} </span>
+    </div>
+{{/messages}}
+<a href="/main">Return</a>
+</body>
+</html>
