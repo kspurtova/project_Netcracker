@@ -1,38 +1,19 @@
 package com.example.projectNC.domain;
 
 
-import javax.persistence.*;
+public enum YearOfStudying {
+    FIRST_YEAR_FIRST_SEMESTER;
+ /*   FIRST_YEAR_SECOND_SEMESTER,
+    SECOND_YEAR_FIRST_SEMESTER,
+    SECOND_YEAR_SECOND_SEMESTER,
+    THIRD_YEAR_FIRST_SEMESTER,
+    THIRD_YEAR_SECOND_SEMESTER,
+    FORTH_YEAR_FIRST_SEMESTER,
+    FORTH_YEAR_SECOND_SEMESTER,
+    FIFTH_YEAR_FIRST_SEMESTER,
+    FIFTH_YEAR_SECOND_SEMESTER,
+    SIXTH_YEAR_FIRST_SEMESTER,
+    SIXTH_YEAR_SECOND_SEMESTER,
 
-@Entity
-@Table(name = "yearstd")
-public class YearOfStudying {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String name;
-
-    public YearOfStudying() {
-    }
-
-    public YearOfStudying(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+  */
 }
-

@@ -2,6 +2,7 @@ package com.example.projectNC.domain;
 
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Table(name = "courses")
@@ -11,6 +12,9 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+
+    @OneToMany(mappedBy = "primaryCourse", fetch = FetchType.EAGER)
+    private Collection<Material> abstracts;
 
     public Course() {
     }
@@ -33,5 +37,13 @@ public class Course {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Collection<Material> getAbstracts() {
+        return abstracts;
+    }
+
+    public void setAbstracts(Collection<Material> abstracts) {
+        this.abstracts = abstracts;
     }
 }

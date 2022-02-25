@@ -2,6 +2,7 @@ package com.example.projectNC.domain;
 
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Set;
 
 @Entity
@@ -18,6 +19,9 @@ public class User {
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
+
+    @OneToMany(mappedBy = "primaryUser", fetch = FetchType.EAGER)
+    private Collection<Material> abstracts;
 
     public Long getId() {
         return id;
@@ -57,5 +61,13 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public Collection<Material> getAbstracts() {
+        return abstracts;
+    }
+
+    public void setAbstracts(Collection<Material> abstracts) {
+        this.abstracts = abstracts;
     }
 }
