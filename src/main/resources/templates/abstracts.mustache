@@ -6,17 +6,18 @@
 <div><i>Добавить тип конспекта, изменить тэг на course, years идут из информации о пользователе (либо выбираются, если не указано)</i></div>
 <div>
     <form method="post">
-        <input type="text" name="text" placeholder="Введите текст" />
-        <select type="course">
+        <select type="text" name="course">
             <option>Предмет из БД 1</option>
             <option>Предмет из БД 2</option>
             <option>Предмет из БД 3</option>
         </select>
-        <input type="text" name="tag" placeholder="Предмет"/>
+        <select type="text" name="type">
+            <option>Лекция</option>
+            <option>Практика</option>
+        </select>
         <input type="date" name="date" placeholder="Дата"/>
-
+        <!-- User, year of studying берется из информации -->
         <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
-        <button type="submit">Добавить</button>
     </form>
 </div>
 
@@ -24,15 +25,15 @@
 
 <div>
     <form method="post">
-        <input type="text" name="text" placeholder="Введите текст" />
         <input type="text" name="tag" placeholder="Тема"/>
+        <input type="text" name="text" placeholder="Введите текст" />
 
         <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
         <button type="submit">Добавить</button>
     </form>
 </div>
 
-
+<!-- Это уже для отдельной сущности Task-->
 <div>
     <form method="post">
         <input type="text" name="link" placeholder="Добавьте ссылку на видео-материал" />

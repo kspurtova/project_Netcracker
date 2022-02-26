@@ -2,6 +2,8 @@ package com.example.projectNC.controller;
 
 
 import com.example.projectNC.domain.Course;
+import com.example.projectNC.domain.Material;
+import com.example.projectNC.domain.User;
 import com.example.projectNC.domain.Message;
 import com.example.projectNC.repos.CourseRepo;
 import com.example.projectNC.repos.MaterialRepo;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Map;
 
 @Controller
+/* Контроллер - это программный модуль, который по пути /...
+* слушает запросы от пользователя и возвращает какие-то данные */
 public class MainController {
     @Autowired
     private MessageRepo messageRepo;
@@ -32,47 +36,52 @@ public class MainController {
 
     @GetMapping("/abstracts")
     public String abstracts(Map<String, Object> model) {
-        Iterable<Message> messages = messageRepo.findAll();
+        Iterable<Material> materials = materialRepo.findAllBy();
 
-        model.put("messages", messages);
+        model.put("materials", materials);
 
         return "abstracts";
     }
 
     @PostMapping("/abstracts")
-    public String add(@RequestParam String text, @RequestParam String tag, @RequestParam String date, Map<String, Object> model) {
-        Message message = new Message(text, tag, date);
+    public String add(@RequestParam String course, @RequestParam String type, @RequestParam String date, @RequestParam String tag, @RequestParam String text, @RequestParam String link, @RequestParam String task, @RequestParam String deadline,  Map<String, Object> model) {
+       // ВОПРОС. Откуда мы берем пользователя и год обучения?
 
-        messageRepo.save(message);
+        Material material = new Material(text, tag, date, user, year, course, type);
 
-        Iterable<Message> messages = messageRepo.findAll();
+        materialRepo.save(material);
 
-        model.put("messages", messages);
+        Iterable<Material> materials = materialRepo.findAllBy();
+
+        model.put("materials", materials);
 
         return "abstracts";
     }
 
     @PostMapping("filter")
-    public String filter(@RequestParam String filtertag, @RequestParam String filterdate, Map<String, Object> model) {
-        Iterable<Message> messages;
+    public String filter(@RequestParam String filteryear, @RequestParam String filtercourse, @RequestParam String filtertype, @RequestParam String filterdate, @RequestParam String filterlist,  Map<String, Object> model) {
+        Iterable<Material> materials;
 
-        if (filtertag != null && !filtertag.isEmpty()) {
-            if (filterdate != null && !filterdate.isEmpty()) {
-                messages = messageRepo.findByTagAndDate(filtertag, filterdate);
+        /*
+        if (filteryear != null && !filteryear.isEmpty()) {
+            if (filtercourse != null && !filtercourse.isEmpty()) {
+                materials = materialRepo.findByYearsOfStudyingAndPrimaryCourse(filteryear, filtercourse);
             }
             else {
-                messages = messageRepo.findByTag(filtertag);
+                materials = materialRepo.findByTag(filtertag);
             }
         } else {
             if (filterdate != null && !filterdate.isEmpty()) {
                 messages = messageRepo.findByDate(filterdate);
             }
             else {
-                messages = messageRepo.findAll();
+                materials = materialRepo.findAll();
             }
         }
+        
+         */
 
-        model.put("messages", messages);
+        model.put("materials", materials);
 
         return "filters";
     }

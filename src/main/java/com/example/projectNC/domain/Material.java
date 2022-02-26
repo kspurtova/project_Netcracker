@@ -7,12 +7,15 @@ import java.util.Set;
 import com.example.projectNC.domain.*;
 
 
-@Entity
+@Entity // сущность, которую нужно сохранять в БД
 @Table(name = "materials")
 public class Material {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id_material;
+    @Id  // идентификатор
+    @GeneratedValue(strategy = GenerationType.AUTO) // автоматическая генерация с помощью фреймворка и БД
+    private Long id;
+    private String text;
+    private String tag;
+    private String date;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID")
@@ -33,12 +36,25 @@ public class Material {
     private Set<TypeOfLesson> typesOfLessons;
 
 
+    public Material(String text, String tag, String date, User primaryUser, Set<YearOfStudying> yearsOfStudying, Course primaryCourse, Set<TypeOfLesson> typesOfLessons) {
+        this.text = text;
+        this.tag = tag;
+        this.date = date;
+        this.primaryUser = primaryUser;
+        this.yearsOfStudying = yearsOfStudying;
+        this.primaryCourse = primaryCourse;
+        this.typesOfLessons = typesOfLessons;
+    }
+
+    public Material() {
+    }
+
     public Long getId_material() {
-        return id_material;
+        return id;
     }
 
     public void setId_material(Long id_material) {
-        this.id_material = id_material;
+        this.id = id_material;
     }
 
     public User getPrimaryUser() {
@@ -73,5 +89,20 @@ public class Material {
         this.typesOfLessons = typesOfLessons;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
 
 }

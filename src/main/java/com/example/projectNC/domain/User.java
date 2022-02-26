@@ -23,6 +23,9 @@ public class User {
     @OneToMany(mappedBy = "primaryUser", fetch = FetchType.EAGER)
     private Collection<Material> abstracts;
 
+    @OneToMany(mappedBy = "primaryUser", fetch = FetchType.EAGER)
+    private Collection<Task> tasks;
+
     public Long getId() {
         return id;
     }
