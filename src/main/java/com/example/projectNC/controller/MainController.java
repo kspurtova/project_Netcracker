@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
 
@@ -39,6 +40,16 @@ public class MainController {
         Iterable<Material> materials = materialRepo.findAllBy();
 
         model.put("materials", materials);
+
+        return "abstracts";
+    }
+
+
+    @PostMapping("/abstracts")
+    public String form( Map<String, Object> model) {
+
+        Collection<Course> courses = courseRepo.findAll();
+        model.put("courses", courses);
 
         return "abstracts";
     }
