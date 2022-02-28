@@ -1,19 +1,18 @@
 package com.example.projectNC.controller;
 
 
-import com.example.projectNC.domain.Course;
-import com.example.projectNC.domain.Material;
-import com.example.projectNC.domain.User;
-import com.example.projectNC.domain.Message;
+import com.example.projectNC.domain.*;
 import com.example.projectNC.repos.CourseRepo;
 import com.example.projectNC.repos.MaterialRepo;
 import com.example.projectNC.repos.MessageRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Collections;
 import java.util.Map;
 
 @Controller
@@ -31,6 +30,7 @@ public class MainController {
 
     @GetMapping("/")
     public String greeting(Map<String, Object> model) {
+
         return "greeting";
     }
 
@@ -44,10 +44,28 @@ public class MainController {
     }
 
     @PostMapping("/abstracts")
-    public String add(@RequestParam String course, @RequestParam String type, @RequestParam String date, @RequestParam String tag, @RequestParam String text, @RequestParam String link, @RequestParam String task, @RequestParam String deadline,  Map<String, Object> model) {
+    public String add(@AuthenticationPrincipal User user,
+                      @RequestParam String course,
+                      @RequestParam String type,
+                      @RequestParam String year,
+                      @RequestParam String date,
+                      @RequestParam String tag,
+                      @RequestParam String text,
+
+                      Map<String, Object> model) {
+
+        /*
+         @RequestParam String link,
+                      @RequestParam String task,
+                      @RequestParam String deadline,
+         */
        // ВОПРОС. Откуда мы берем пользователя и год обучения?
 
-        Material material = new Material(text, tag, date, user, year, course, type);
+        Course course1 = new Course(course);
+
+        Material material = new Material(text, tag, date, user, course1);
+        material.setYearsOfStudying(Collections.singleton(YearOfStudying.FIRST_YEAR_FIRST_SEMESTER));
+        material.setTypesOfLessons(Collections.singleton(TypeOfLesson.LECTION));
 
         materialRepo.save(material);
 
@@ -59,7 +77,12 @@ public class MainController {
     }
 
     @PostMapping("filter")
-    public String filter(@RequestParam String filteryear, @RequestParam String filtercourse, @RequestParam String filtertype, @RequestParam String filterdate, @RequestParam String filterlist,  Map<String, Object> model) {
+    public String filter(@RequestParam String filteryear,
+                         @RequestParam String filtercourse,
+                         @RequestParam String filtertype,
+                         @RequestParam String filterdate,
+                         @RequestParam String filterlist,
+                         Map<String, Object> model) {
         Iterable<Material> materials;
 
         /*
@@ -78,10 +101,10 @@ public class MainController {
                 materials = materialRepo.findAll();
             }
         }
-        
+
          */
 
-        model.put("materials", materials);
+        //model.put("materials", materials);
 
         return "filters";
     }

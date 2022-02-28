@@ -6,7 +6,7 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "courses")
-public class Course {
+public class Course{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

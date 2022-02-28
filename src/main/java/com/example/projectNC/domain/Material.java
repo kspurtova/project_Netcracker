@@ -17,7 +17,7 @@ public class Material {
     private String tag;
     private String date;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_ID")
     private User primaryUser;
 
@@ -36,6 +36,7 @@ public class Material {
     private Set<TypeOfLesson> typesOfLessons;
 
 
+
     public Material(String text, String tag, String date, User primaryUser, Set<YearOfStudying> yearsOfStudying, Course primaryCourse, Set<TypeOfLesson> typesOfLessons) {
         this.text = text;
         this.tag = tag;
@@ -44,6 +45,14 @@ public class Material {
         this.yearsOfStudying = yearsOfStudying;
         this.primaryCourse = primaryCourse;
         this.typesOfLessons = typesOfLessons;
+    }
+
+    public Material(String text, String tag, String date, User primaryUser, Course primaryCourse) {
+        this.text = text;
+        this.tag = tag;
+        this.date = date;
+        this.primaryUser = primaryUser;
+        this.primaryCourse = primaryCourse;
     }
 
     public Material() {
