@@ -37,18 +37,8 @@ public class MainController {
 
     @GetMapping("/abstracts")
     public String abstracts(Map<String, Object> model) {
-        Iterable<Material> materials = materialRepo.findAllBy();
+        Iterable<Course> courses = courseRepo.findAll();
 
-        model.put("materials", materials);
-
-        return "abstracts";
-    }
-
-
-    @PostMapping("/abstracts")
-    public String form( Map<String, Object> model) {
-
-        Collection<Course> courses = courseRepo.findAll();
         model.put("courses", courses);
 
         return "abstracts";

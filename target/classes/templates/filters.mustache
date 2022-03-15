@@ -1,0 +1,62 @@
+<html>
+
+<body>
+
+<div>Найти нужные материалы</div>
+<div><i>Фильтр по темам (тегам) в материалах. Выбор предмета и семестра, разбиение на темы.</i></div>
+
+<div>Список конспектов</div>
+<form method="post" action="filter">
+
+    <select type="text" name="filteryear">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+    </select>
+
+
+    <select type="text" name="filtercourse">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+    </select>
+
+    <select type="text" name="filtertype">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+    </select>
+
+    <select type="date" name="filterdate">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+    </select>
+
+    <!-- Выбрать сортировку по тэгам или по дате-->
+    <select type="text" name="filterlist">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+    </select>
+
+
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+    <button type="submit">Найти</button>
+</form>
+{{#materials}}
+    <div>
+        <b>{{id}}</b>
+        <span>{{text}}</span>
+        <i>{{tag}}</i>
+        <span> {{date}} </span>
+        <i>{{primaryUser}}</i>
+        <span>{{yearOfStudying}}</span>
+        <i>{{primaryCourse}}</i>
+        <span>{{typeOfLesson}}</span>
+        <i>{{link}}</i>
+    </div>
+{{/materials}}
+<a href="/main">Return</a>
+</body>
+</html>
