@@ -1,9 +1,10 @@
+
 package com.example.projectNC.domain;
 
 
 public enum YearOfStudying {
     FIRST_YEAR_FIRST_SEMESTER;
- /*   FIRST_YEAR_SECOND_SEMESTER,
+/*   FIRST_YEAR_SECOND_SEMESTER,
     SECOND_YEAR_FIRST_SEMESTER,
     SECOND_YEAR_SECOND_SEMESTER,
     THIRD_YEAR_FIRST_SEMESTER,
@@ -16,4 +17,5 @@ public enum YearOfStudying {
     SIXTH_YEAR_SECOND_SEMESTER,
 
   */
+
 }

@@ -1,0 +1,31 @@
+<html>
+
+<body>
+    <div>
+        <form action="/logout" method="post">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+            <input type="submit" value="Sign Out"/>
+        </form>
+    </div>
+    <div>Личный кабинет</div>
+    <div><i>Изменить информацию о себе</i></div>
+
+    <div>Информация о пользователе</div>
+    <div><b>Имя</b></div>
+    <div><b>Дата регистрации</b></div>
+    <div><b>Текущий курс и семестр обучения</b></div>
+
+    <div><i>Вы должны заполнить расписание предметов для пользования сайтом</i></div>
+
+
+    <div><a href="/abstracts">Онлайн-конспектирование</a></div>
+    <div><a href="/schedule">Расписание</a></div>
+    <div><a href="/filters">Учебные материалы, сортировка по темам</a></div>
+    <div><a href="/statistics">Статистика</a></div>
+
+    <div><i> Ближайший дедлайн: </i></div>
+    <div><i> До сессии осталось: </i></div>
+
+
+</body>
+</html>

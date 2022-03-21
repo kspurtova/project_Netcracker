@@ -65,7 +65,7 @@ public class MainController {
         Course course1 = new Course(course);
 
         Material material = new Material(text, tag, date, user, course1);
-        material.setYearsOfStudying(Collections.singleton(YearOfStudying.FIRST_YEAR_FIRST_SEMESTER));
+//        material.setYearsOfStudying(Collections.singleton(YearOfStudying.FIRST_YEAR_FIRST_SEMESTER));
         material.setTypesOfLessons(Collections.singleton(TypeOfLesson.LECTION));
 
         materialRepo.save(material);

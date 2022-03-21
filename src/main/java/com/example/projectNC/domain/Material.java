@@ -21,10 +21,12 @@ public class Material {
     @JoinColumn(name = "USER_ID")
     private User primaryUser;
 
+
     @ElementCollection(targetClass = YearOfStudying.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "material_year", joinColumns = @JoinColumn(name = "id_material"))
     @Enumerated(EnumType.STRING)
     private Set<YearOfStudying> yearsOfStudying;
+
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "COURSE_ID")
@@ -37,7 +39,7 @@ public class Material {
 
 
 
-    public Material(String text, String tag, String date, User primaryUser, Set<YearOfStudying> yearsOfStudying, Course primaryCourse, Set<TypeOfLesson> typesOfLessons) {
+    public Material(String text, String tag, String date, User primaryUser, Course primaryCourse, Set<TypeOfLesson> typesOfLessons) {
         this.text = text;
         this.tag = tag;
         this.date = date;

@@ -26,8 +26,8 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "primaryUser", fetch = FetchType.EAGER)
     private Collection<Material> abstracts;
 
-    @OneToMany(mappedBy = "primaryUser", fetch = FetchType.EAGER)
-    private Collection<Task> tasks;
+//    @OneToMany(mappedBy = "primaryUser", fetch = FetchType.EAGER)
+//    private Collection<Task> tasks;
 
     public Long getId() {
         return id;

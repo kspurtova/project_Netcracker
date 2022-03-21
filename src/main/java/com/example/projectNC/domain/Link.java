@@ -11,8 +11,8 @@ public class Link {
 
     private String name_link;
 
-    @OneToOne(optional = false, mappedBy = "link")
-    private Task tasks;
+//    @OneToOne(optional = false, mappedBy = "link")
+//    private Task tasks;
 
     public Long getId_link() {
         return id_link;
@@ -30,11 +30,11 @@ public class Link {
         this.name_link = name_link;
     }
 
-    public Task getTasks() {
-        return tasks;
-    }
-
-    public void setTasks(Task tasks) {
-        this.tasks = tasks;
-    }
+//    public Task getTasks() {
+//        return tasks;
+//    }
+//
+//    public void setTasks(Task tasks) {
+//        this.tasks = tasks;
+//    }
 }

@@ -16,8 +16,8 @@ public class Course{
     @OneToMany(mappedBy = "primaryCourse", fetch = FetchType.EAGER)
     private Collection<Material> abstracts;
 
-    @OneToMany(mappedBy = "primaryCourse", fetch = FetchType.EAGER)
-    private Collection<Task> tasks;
+//    @OneToMany(mappedBy = "primaryCourse", fetch = FetchType.EAGER)
+//    private Collection<Task> tasks;
 
     public Course() {
     }
